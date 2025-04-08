@@ -554,7 +554,7 @@ export interface ApiFivenameFivename extends Struct.CollectionTypeSchema {
   collectionName: 'fivenames';
   info: {
     description: '';
-    displayName: 'Switzerland-Form';
+    displayName: 'SaudiArabia-Form';
     pluralName: 'fivenames';
     singularName: 'fivename';
   };
@@ -613,7 +613,7 @@ export interface ApiFivthnameFivthname extends Struct.CollectionTypeSchema {
   collectionName: 'fivthnames';
   info: {
     description: '';
-    displayName: 'France-Form';
+    displayName: 'UK-Form';
     pluralName: 'fivthnames';
     singularName: 'fivthname';
   };
@@ -672,7 +672,7 @@ export interface ApiFournameFourname extends Struct.CollectionTypeSchema {
   collectionName: 'fournames';
   info: {
     description: '';
-    displayName: 'UK-Form';
+    displayName: 'USA-Form';
     pluralName: 'fournames';
     singularName: 'fourname';
   };
