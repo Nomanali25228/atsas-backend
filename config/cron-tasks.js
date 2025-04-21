@@ -30,8 +30,8 @@ module.exports = {
         port: 587,
         secure: false,
         auth: {
-          user: 'atsasmun@gmail.com',
-          pass: 'bdygpeczrxtasqof',
+          user: 'info@atsasmun.com',
+          pass: 'ucnculvwigndwkix',
         },
       });
 
@@ -362,7 +362,7 @@ module.exports = {
 
           // 📧 Send email
           const info = await transporter.sendMail({
-            from: '"Welcome Team" <atsasmun@gmail.com>',
+            from: '"Welcome Team" <info@atsasmun.com>',
             to: userEmail,
             subject: 'Welcome to ATSAS MUN - Registration Confirmation',
             html: `
