@@ -16,10 +16,17 @@
       "type": "boolean",
       "default": false
     },
-    "firstname": {
-      "type": "relation",
-      "relation": "oneToOne",
-      "target": "api::firstname.firstname"
+    "Email": {
+      "type": "email"
+    },
+    "FirstName": {
+      "type": "string"
+    },
+    "Idname": {
+      "type": "biginteger"
+    },
+    "Destinations": {
+      "type": "string"
     }
   }
 }

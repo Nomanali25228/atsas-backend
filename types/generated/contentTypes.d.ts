@@ -743,11 +743,11 @@ export interface ApiNotificationNotification
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
+    Destinations: Schema.Attribute.String;
+    Email: Schema.Attribute.Email;
     emailSent: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<false>;
-    firstname: Schema.Attribute.Relation<
-      'oneToOne',
-      'api::firstname.firstname'
-    >;
+    FirstName: Schema.Attribute.String;
+    Idname: Schema.Attribute.BigInteger;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
       'oneToMany',
