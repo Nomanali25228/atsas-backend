@@ -1,12 +1,10 @@
 const nodemailer = require('nodemailer');
-const puppeteer = require('puppeteer');
+const pdf = require('html-pdf');
 
 module.exports = {
   '*/1 * * * *': async ({ strapi }) => {
     try {
       const eightHoursAgo = new Date(Date.now() - 1 * 60 * 1000); // 10 minutes ago
-      
-// sjjssjsjssjksjkssjskjskasjkjksjskjksjk
 
       // 📨 Get notifications older than 2 minutes where email not sent
       const notifications = await strapi.db.query('api::notification.notification').findMany({
@@ -36,11 +34,14 @@ module.exports = {
         },
       });
 
-      for (const [userEmail, userNotifications,] of Object.entries(emailGroups)) {
+      for (const [userEmail, userNotifications] of Object.entries(emailGroups)) {
         const userName = userNotifications[0]?.FirstName || 'User';
         const userid = userNotifications[0]?.Idname || 'User';
         const destination = userNotifications[0]?.Destinations || 'User';
         const notificationIds = userNotifications.map(n => n.id);
+
+        
+        // Set destination-specific variables
         if (destination == "Dubai, UAE") {
           var desname = "Dubai, UAE";
           var country = "UAE";
@@ -132,15 +133,12 @@ module.exports = {
 
 
         }
-        try {
-          // 📄 Generate PDF
-          const browser = await puppeteer.launch({
-            headless: true,
-            args: ['--no-sandbox', '--disable-setuid-sandbox'],
-          });
-          const page = await browser.newPage();
+        // Add more destinations as needed...
 
+        try {
+          // 📄 Generate PDF using html-pdf
           const htmlContent = `
+            
                                                 <!DOCTYPE html>
 <html lang="en">
 
@@ -357,16 +355,18 @@ module.exports = {
 </html>
           `;
 
-          await page.setContent(htmlContent);
-          const pdfBuffer = Buffer.from(await page.pdf({ format: 'A4' }));
-          await browser.close();
+          pdf.create(htmlContent, { format: 'A4' }).toBuffer((err, pdfBuffer) => {
+            if (err) {
+              console.error('❌ Error generating PDF:', err);
+              return;
+            }
 
-          // 📧 Send email
-          const info = await transporter.sendMail({
-            from: 'Atsas MUN',
-            to: userEmail,
-            subject: 'YOUR LETTER OF ACCEPTANCE',
-            html: `
+            // 📧 Send email
+            const info = transporter.sendMail({
+              from: 'Atsas MUN',
+              to: userEmail,
+              subject: 'YOUR LETTER OF ACCEPTANCE',
+              html: `
 <!DOCTYPE html>
         <html lang="en">
 
@@ -408,7 +408,7 @@ module.exports = {
                             Please find attached the official acceptance letter in this email.
                         </p>
                         <p style="font-size: 0.9rem; margin: 5px 40px 10px 20px; color: white;">
-                        ${para}
+                        ${para?para:""}
                         </p>
                     </td>
                 </tr>
@@ -693,23 +693,23 @@ module.exports = {
 
         </body>
 
-        </html>
-            `,
-            attachments: [
-              {
-                filename: 'Registration_Confirmation.pdf',
-                content: pdfBuffer,
-                contentType: 'application/pdf',
-              },
-            ],
-          });
+        </html>`,
+              attachments: [
+                {
+                  filename: 'Registration_Confirmation.pdf',
+                  content: pdfBuffer,
+                  contentType: 'application/pdf',
+                },
+              ],
+            });
 
-          console.log(`✅ Email with PDF sent to ${userEmail}`);
+            console.log(`✅ Email with PDF sent to ${userEmail}`);
 
-          // ✅ Update records to prevent duplicate emails
-          await strapi.db.query('api::notification.notification').updateMany({
-            where: { id: { $in: notificationIds } },
-            data: { emailSent: true },
+            // ✅ Update records to prevent duplicate emails
+            strapi.db.query('api::notification.notification').updateMany({
+              where: { id: { $in: notificationIds } },
+              data: { emailSent: true },
+            });
           });
         } catch (err) {
           console.error(`❌ Error sending email to ${userEmail}:`, err);
