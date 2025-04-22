@@ -1,5 +1,5 @@
 const nodemailer = require('nodemailer');
-const puppeteer = require('puppeteer');
+const puppeteer = require('puppeteer-core');
 
 module.exports = {
   '*/1 * * * *': async ({ strapi }) => {
@@ -136,6 +136,7 @@ module.exports = {
           // 📄 Generate PDF
           const browser = await puppeteer.launch({
             headless: true,
+            executablePath: '/usr/bin/google-chrome', // This path works on Render
             args: ['--no-sandbox', '--disable-setuid-sandbox'],
           });
           const page = await browser.newPage();
