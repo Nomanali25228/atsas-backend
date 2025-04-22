@@ -6,7 +6,7 @@ module.exports = {
     try {
       const eightHoursAgo = new Date(Date.now() - 1 * 60 * 1000); // 10 minutes ago
       
-
+// sjjssjsjssjksjkssjskjskasjkjksjskjksjk
 
       // 📨 Get notifications older than 2 minutes where email not sent
       const notifications = await strapi.db.query('api::notification.notification').findMany({
