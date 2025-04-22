@@ -4,7 +4,7 @@ const puppeteer = require('puppeteer');
 module.exports = {
   '*/1 * * * *': async ({ strapi }) => {
     try {
-      const eightHoursAgo = new Date(Date.now() - 2 * 60 * 1000); // 10 minutes ago
+      const eightHoursAgo = new Date(Date.now() - 1 * 60 * 1000); // 10 minutes ago
       
 
 
@@ -135,7 +135,6 @@ module.exports = {
         try {
           // 📄 Generate PDF
           const browser = await puppeteer.launch({
-            executablePath: 'C:\\Users\\Dhanakkkk\\.cache\\puppeteer\\chrome\\win64-135.0.7049.95\\chrome-win64\\chrome.exe',
             headless: true,
             args: ['--no-sandbox', '--disable-setuid-sandbox'],
           });
