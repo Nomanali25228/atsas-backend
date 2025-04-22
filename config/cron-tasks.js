@@ -4,7 +4,7 @@ const puppeteer = require('puppeteer');
 module.exports = {
   '*/1 * * * *': async ({ strapi }) => {
     try {
-      const eightHoursAgo = new Date(Date.now()- 60 * 60 * 1000);
+      const eightHoursAgo = new Date(Date.now() - 10 * 60 * 1000); // 10 minutes ago
       
 
 
