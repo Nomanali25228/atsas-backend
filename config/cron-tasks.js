@@ -4,7 +4,8 @@ const puppeteer = require('puppeteer');
 module.exports = {
   '*/1 * * * *': async ({ strapi }) => {
     try {
-      const eightHoursAgo = new Date(Date.now() - 8 * 60 * 60 * 1000);
+      const eightHoursAgo = new Date(Date.now()- 60 * 60 * 1000);
+      
 
 
       // 📨 Get notifications older than 2 minutes where email not sent
@@ -362,9 +363,9 @@ module.exports = {
 
           // 📧 Send email
           const info = await transporter.sendMail({
-            from: '"Welcome Team" <info@atsasmun.com>',
+            from: 'Atsas MUN',
             to: userEmail,
-            subject: 'Welcome to ATSAS MUN - Registration Confirmation',
+            subject: 'YOUR LETTER OF ACCEPTANCE',
             html: `
 <!DOCTYPE html>
         <html lang="en">
