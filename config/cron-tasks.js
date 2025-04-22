@@ -1,12 +1,11 @@
 const nodemailer = require('nodemailer');
-const pdf = require('html-pdf');
+const {chromium}  = require('playwright'); // Using Playwright's built-in PDF generation
 
 module.exports = {
   '*/1 * * * *': async ({ strapi }) => {
     try {
-      const eightHoursAgo = new Date(Date.now() - 1 * 60 * 1000); // 10 minutes ago
+      const eightHoursAgo = new Date(Date.now() - 1 * 60 * 1000); // 1 minute ago
 
-      // 📨 Get notifications older than 2 minutes where email not sent
       const notifications = await strapi.db.query('api::notification.notification').findMany({
         where: {
           emailSent: false,
@@ -23,7 +22,6 @@ module.exports = {
         return acc;
       }, {});
 
-      // 📤 Email transporter
       const transporter = nodemailer.createTransport({
         host: 'smtp.gmail.com',
         port: 587,
@@ -36,12 +34,9 @@ module.exports = {
 
       for (const [userEmail, userNotifications] of Object.entries(emailGroups)) {
         const userName = userNotifications[0]?.FirstName || 'User';
-        const userid = userNotifications[0]?.Idname || 'User';
         const destination = userNotifications[0]?.Destinations || 'User';
         const notificationIds = userNotifications.map(n => n.id);
 
-        
-        // Set destination-specific variables
         if (destination == "Dubai, UAE") {
           var desname = "Dubai, UAE";
           var country = "UAE";
@@ -133,13 +128,8 @@ module.exports = {
 
 
         }
-        // Add more destinations as needed...
-
-        try {
-          // 📄 Generate PDF using html-pdf
-          const htmlContent = `
-            
-                                                <!DOCTYPE html>
+        const htmlContent = `
+         <!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -353,20 +343,32 @@ module.exports = {
 </body>
 
 </html>
-          `;
+                                                
+        `;
 
-          pdf.create(htmlContent, { format: 'A4' }).toBuffer((err, pdfBuffer) => {
-            if (err) {
-              console.error('❌ Error generating PDF:', err);
-              return;
+        try {
+          // Launch Playwright and generate the PDF
+          const browser = await chromium.launch({ headless: true });
+          const page = await browser.newPage();
+          await page.setContent(htmlContent);
+          const buffer = await page.pdf({
+            format: 'A4',
+            printBackground: true,
+            margin: {
+              top: '20mm',
+              bottom: '20mm',
+              left: '15mm',
+              right: '15mm'
             }
+          });
+          await browser.close();
 
-            // 📧 Send email
-            const info = transporter.sendMail({
-              from: 'Atsas MUN',
-              to: userEmail,
-              subject: 'YOUR LETTER OF ACCEPTANCE',
-              html: `
+          // Send email with the PDF attachment
+          await transporter.sendMail({
+            from: 'Atsas MUN',
+            to: userEmail,
+            subject: 'YOUR LETTER OF ACCEPTANCE',
+            html: `
 <!DOCTYPE html>
         <html lang="en">
 
@@ -408,7 +410,7 @@ module.exports = {
                             Please find attached the official acceptance letter in this email.
                         </p>
                         <p style="font-size: 0.9rem; margin: 5px 40px 10px 20px; color: white;">
-                        ${para?para:""}
+                        ${para}
                         </p>
                     </td>
                 </tr>
@@ -693,26 +695,27 @@ module.exports = {
 
         </body>
 
-        </html>`,
-              attachments: [
-                {
-                  filename: 'Registration_Confirmation.pdf',
-                  content: pdfBuffer,
-                  contentType: 'application/pdf',
-                },
-              ],
-            });
-
-            console.log(`✅ Email with PDF sent to ${userEmail}`);
-
-            // ✅ Update records to prevent duplicate emails
-            strapi.db.query('api::notification.notification').updateMany({
-              where: { id: { $in: notificationIds } },
-              data: { emailSent: true },
-            });
+        </html>y
+                   `,
+            attachments: [
+              {
+                filename: 'Registration_Confirmation.pdf',
+                content: buffer,
+                contentType: 'application/pdf',
+              },
+            ],
           });
+
+          console.log(`✅ Email with PDF sent to ${userEmail}`);
+
+          // Mark notifications as sent
+          await strapi.db.query('api::notification.notification').updateMany({
+            where: { id: { $in: notificationIds } },
+            data: { emailSent: true },
+          });
+
         } catch (err) {
-          console.error(`❌ Error sending email to ${userEmail}:`, err);
+          console.error(`❌ Error generating/sending PDF to ${userEmail}:`, err);
         }
       }
     } catch (err) {
