@@ -137,142 +137,171 @@ module.exports = {
         // Create the HTML content
         const htmlContent = ` <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8">
-  <title>Basic Computer Course</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Letter of Acceptance</title>
   <style>
     body {
-      font-family: Arial, sans-serif;
-      font-size: 11px;
       margin: 0;
       padding: 0;
+      font-family: Arial, sans-serif;
+      background-color: #f8f9fa;
+      color: #333;
+    }
+
+    .page-break {
+      page-break-after: always;
     }
 
     table {
-      width: 794px;
+      background-color: #fff;
       margin: 0 auto;
+      width: 800px;
       border-collapse: collapse;
     }
 
     td {
       vertical-align: top;
+      padding: 40px 20px;
+      font-size: 14px;
+      line-height: 1.6;
     }
 
-    .left-col {
-      background-color: #f2f2f2;
-      width: 110px;
-      padding: 15px 5px 0 5px;
+    .left-column {
+      width: 120px;
+      background-color: #ffffff;
+      border-right: 4px solid #003c71;
+    }
+
+    .left-column img {
+      width: 130px;
+      display: block;
+      margin: 30px auto 0;
+    }
+
+    .left-column p {
+      font-size: 9px;
       text-align: center;
+      margin: 7px 0;
     }
 
-    .left-col img {
-      width: 70px;
-      margin-bottom: 10px;
-    }
-
-    .right-col {
-      padding: 25px 20px;
+    .leaf-image {
+      width: 105%;
+      display: block;
     }
 
     h2 {
-      font-size: 16px;
-      margin-bottom: 10px;
-      color: #333;
+      text-align: center;
+      margin: 0;
+      font-size: 20px;
+      color: #26427e;
+    }
+
+    .congrats {
+      text-align: center;
+      font-weight: bold;
+      margin: 40px 0;
     }
 
     ul {
-      margin-top: 8px;
-      padding-left: 16px;
+      padding-left: 20px;
     }
 
-    ul ul {
-      margin-top: 4px;
-      padding-left: 14px;
+    .signature img {
+      max-width: 100px;
+      height: auto;
+      display: inline-block;
+      vertical-align: middle;
     }
 
     .footer {
+      font-size: 11px;
+      color: #666;
       text-align: center;
-      padding: 10px;
-      font-size: 9px;
-      color: #555;
+      margin-top: 340px;
     }
   </style>
 </head>
+
 <body>
-  <table>
+  <table class="page-break">
     <tr>
-      <td class="left-col">
-        <img src="https://via.placeholder.com/70" alt="Course Icon">
-        <p><strong>Basic Computer</strong></p>
-        <p>Course Outline</p>
+      <td class="left-column">
+        <img src="https://ftueyhj.stripocdn.email/content/guids/CABINET_76edfd603639686b19c3686766c1f4512d98005c2183ca057d0378867dab713b/images/image_zAB.png" alt="Logo" />
+        <p><span style="color: #003c71;">Diplomatic</span> Simulation <span style="color: #003c71;">of</span><br><span style="color: #003c71;">the</span> United Nations</p>
+        <div style="height: 580px;"></div>
+        <img class="leaf-image" src="https://ftueyhj.stripocdn.email/content/guids/CABINET_76edfd603639686b19c3686766c1f4512d98005c2183ca057d0378867dab713b/images/whatsapp_image_20250409_at_111009_97810a2aremovebgpreview.png" alt="Leaf" />
       </td>
-      <td class="right-col">
-        <h2>Basic Computer Course</h2>
-        <ul>
-          <li><strong>Introduction to Computer</strong></li>
-          <ul>
-            <li>What is Computer?</li>
-            <li>History of Computer</li>
-            <li>Types of Computer</li>
-            <li>Computer Components (Hardware & Software)</li>
-          </ul>
-
-          <li><strong>Operating System Basics</strong></li>
-          <ul>
-            <li>Windows Introduction</li>
-            <li>Using Desktop, Taskbar, and Start Menu</li>
-            <li>File and Folder Management</li>
-            <li>Using Control Panel</li>
-          </ul>
-
-          <li><strong>MS Word</strong></li>
-          <ul>
-            <li>Creating & Formatting Documents</li>
-            <li>Using Tables, Images, Shapes</li>
-            <li>Page Setup and Printing</li>
-          </ul>
-
-          <li><strong>MS Excel</strong></li>
-          <ul>
-            <li>Basics of Worksheets</li>
-            <li>Formulas and Functions</li>
-            <li>Charts and Formatting</li>
-          </ul>
-
-          <li><strong>MS PowerPoint</strong></li>
-          <ul>
-            <li>Creating Presentations</li>
-            <li>Slide Design & Transitions</li>
-            <li>Animations and Slide Show</li>
-          </ul>
-
-          <li><strong>Internet & Email</strong></li>
-          <ul>
-            <li>Using Web Browsers</li>
-            <li>Searching Information</li>
-            <li>Creating and Using Email</li>
-          </ul>
-
-          <li><strong>Typing Practice</strong></li>
-          <ul>
-            <li>English Typing</li>
-            <li>Urdu Typing (Optional)</li>
-          </ul>
-
-          <li><strong>Social Media & Online Safety</strong></li>
-          <ul>
-            <li>Using Facebook, WhatsApp (Web)</li>
-            <li>Online Safety & Cyber Awareness</li>
-          </ul>
-        </ul>
+      <td>
+        <h2>LETTER OF ACCEPTANCE</h2>
+        <p class="congrats">CONGRATULATIONS</p>
+        <p>Dear Applicant,<br><br>
+          We are grateful to inform you that you have been selected to join the Atsas International MUN ${desname} 2025 United Nations Simulation Conference Crafting Future Leaders in the Post-Pandemic Era, to be held from ${date} 2025 in ${desname}.
+        </p>
+        <p>Atsas Creation International is a High Wycombe, UK Based Diplomatic Simulation Organizer which serves as a platform for Young Leaders and Change makers to exchange ideas and resolve the most challenging global issues.</p>
+        <p>We are pleased to accept and invite you, with detailed information as follows:</p>
+        <p><strong>Name:</strong> ${userName}<br>
+          <strong>Duration of stay:</strong> ${date} 2025<br>
+          <strong>Venue:</strong> ${Hotel} ${desname}<br>
+          <strong>Destination:</strong> ${desname}</p>
+        <p><em>You are requested to pay your delegate fee in order to become a confirmed delegate at Atsasmun ${country} on the following link:</em><br>
+          <a href="https://www.atsasmun.com/${payment}/1?userid=${userId}" style="color:#003c71;">https://www.atsasmun.com/${payment}</a>
+        </p>
+        <p class="footer">
+          Address: 42 Heneretton Way High Wycombe, HP13 7UE, United Kingdom<br>
+          Website: www.atsasmun.com | Email: info@atsasmun.com<br>
+          Phone: +44 7487 302322
+        </p>
       </td>
     </tr>
   </table>
 
-  <div class="footer">
-    &copy; 2025 Basic Computer Training. All Rights Reserved.
-  </div>
+  <table>
+    <tr>
+      <td class="left-column">
+        <img src="https://ftueyhj.stripocdn.email/content/guids/CABINET_76edfd603639686b19c3686766c1f4512d98005c2183ca057d0378867dab713b/images/image_zAB.png" alt="Logo" />
+        <p><span style="color: #003c71;">Diplomatic</span> Simulation <span style="color: #003c71;">of</span><br><span style="color: #003c71;">the</span> United Nations</p>
+        <div style="height: 150px;"></div>
+        <img class="leaf-image" style="margin-top: 420px;" src="https://ftueyhj.stripocdn.email/content/guids/CABINET_76edfd603639686b19c3686766c1f4512d98005c2183ca057d0378867dab713b/images/whatsapp_image_20250409_at_111009_97810a2aremovebgpreview.png" alt="Leaf" />
+      </td>
+      <td>
+        <ul>
+          <li>Each participant will be responsible for his/her visa fee and flight ticket to and from ${desname}.</li>
+          <li>We will accommodate your Visa Invitation Letter.</li>
+          <li>We provide visa services for ${desname}.</li>
+          <li>Hotel check-in will be on ${cheackoutdate} except for those who will be taking the Full Experience Package.</li>
+          <li>The committee will provide accommodation (including stay, meals, local transportation and T-shirts) to the participants with Accommodation and Full Experience packages during the event.</li>
+          <li>Before departure, please ensure you are carrying the following mandatory items:
+            <ul>
+              <li>Valid Passport</li>
+              <li>Valid Visa</li>
+            </ul>
+          </li>
+        </ul>
+        <p>We would like to thank you in advance for your cooperation and kind attention. Looking forward to seeing you in ${desname}</p>
+        <p>Regards</p>
+        <div class="signature">
+          <img src="https://ftueyhj.stripocdn.email/content/guids/CABINET_2931b97566d3407768315cf288299eaf675e4b98b62ac690766b987c273adeb9/images/image_gkX.png" alt="Signature" />
+          <img src="https://ftueyhj.stripocdn.email/content/guids/CABINET_2931b97566d3407768315cf288299eaf675e4b98b62ac690766b987c273adeb9/images/stamp_atsasmun.png" alt="Stamp" />
+        </div>
+        <p style="margin-top: 6px; font-weight: bold;">
+          Fasih Ur Rehman<br>
+          <span style="font-weight: normal">info@atsasmun.com<br>
+            Office of the Secretariat<br>
+            ATSAS International MUN</span>
+        </p>
+        <p class="footer">
+          Address: 42 Heneretton Way High Wycombe, HP13 7UE, United Kingdom<br>
+          Website: www.atsasmun.com | Email: info@atsasmun.com<br>
+          Phone: +44 7487 302522
+        </p>
+      </td>
+    </tr>
+  </table>
 </body>
+
 </html>
 
         `;
@@ -332,7 +361,7 @@ module.exports = {
                             Please find attached the official acceptance letter in this email.
                         </p>
                         <p style="font-size: 0.9rem; margin: 5px 40px 10px 20px; color: white;">
-                        ${para?para:""}
+                         ${para?para:""}
                         </p>
                     </td>
                 </tr>
