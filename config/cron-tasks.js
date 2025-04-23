@@ -142,164 +142,199 @@ module.exports = {
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Letter of Acceptance</title>
-  <style>
-    body {
-      margin: 0;
-      padding: 0;
-      font-family: Arial, sans-serif;
-      background-color: #f8f9fa;
-      color: #333;
-    }
-
-    .page-break {
-      page-break-after: always;
-    }
-
-    table {
-      background-color: #fff;
-      margin: 0 auto;
-      width: 800px;
-      border-collapse: collapse;
-    }
-
-    td {
-      vertical-align: top;
-      padding: 40px 20px;
-      font-size: 14px;
-      line-height: 1.6;
-    }
-
-    .left-column {
-      width: 120px;
-      background-color: #ffffff;
-      border-right: 4px solid #003c71;
-    }
-
-    .left-column img {
-      width: 130px;
-      display: block;
-      margin: 30px auto 0;
-    }
-
-    .left-column p {
-      font-size: 9px;
-      text-align: center;
-      margin: 7px 0;
-    }
-
-    .leaf-image {
-      width: 105%;
-      display: block;
-    }
-
-    h2 {
-      text-align: center;
-      margin: 0;
-      font-size: 20px;
-      color: #26427e;
-    }
-
-    .congrats {
-      text-align: center;
-      font-weight: bold;
-      margin: 40px 0;
-    }
-
-    ul {
-      padding-left: 20px;
-    }
-
-    .signature img {
-      max-width: 100px;
-      height: auto;
-      display: inline-block;
-      vertical-align: middle;
-    }
-
-    .footer {
-      font-size: 11px;
-      color: #666;
-      text-align: center;
-      margin-top: 340px;
-    }
-  </style>
 </head>
+<style>
+  .page-break {
+    page-break-after: always;
+  }
+  body {
+    font-size: 12px;
+  }
+  img {
+    width: 100px;
+  }
+</style>
 
-<body>
-  <table class="page-break">
+<body style="margin:0; padding:0; font-family: Arial, sans-serif; background-color:#f8f9fa; color:#333; font-size:12px;">
+
+  <table class="page-break" width="100%" cellpadding="0" cellspacing="0" style="background-color:#fff;">
     <tr>
-      <td class="left-column">
-        <img src="https://ftueyhj.stripocdn.email/content/guids/CABINET_76edfd603639686b19c3686766c1f4512d98005c2183ca057d0378867dab713b/images/image_zAB.png" alt="Logo" />
-        <p><span style="color: #003c71;">Diplomatic</span> Simulation <span style="color: #003c71;">of</span><br><span style="color: #003c71;">the</span> United Nations</p>
-        <div style="height: 580px;"></div>
-        <img class="leaf-image" src="https://ftueyhj.stripocdn.email/content/guids/CABINET_76edfd603639686b19c3686766c1f4512d98005c2183ca057d0378867dab713b/images/whatsapp_image_20250409_at_111009_97810a2aremovebgpreview.png" alt="Leaf" />
-      </td>
-      <td>
-        <h2>LETTER OF ACCEPTANCE</h2>
-        <p class="congrats">CONGRATULATIONS</p>
-        <p>Dear Applicant,<br><br>
-          We are grateful to inform you that you have been selected to join the Atsas International MUN ${desname} 2025 United Nations Simulation Conference Crafting Future Leaders in the Post-Pandemic Era, to be held from ${date} 2025 in ${desname}.
-        </p>
-        <p>Atsas Creation International is a High Wycombe, UK Based Diplomatic Simulation Organizer which serves as a platform for Young Leaders and Change makers to exchange ideas and resolve the most challenging global issues.</p>
-        <p>We are pleased to accept and invite you, with detailed information as follows:</p>
-        <p><strong>Name:</strong> ${userName}<br>
-          <strong>Duration of stay:</strong> ${date} 2025<br>
-          <strong>Venue:</strong> ${Hotel} ${desname}<br>
-          <strong>Destination:</strong> ${desname}</p>
-        <p><em>You are requested to pay your delegate fee in order to become a confirmed delegate at Atsasmun ${country} on the following link:</em><br>
-          <a href="https://www.atsasmun.com/${payment}/1?userid=${userId}" style="color:#003c71;">https://www.atsasmun.com/${payment}</a>
-        </p>
-        <p class="footer">
-          Address: 42 Heneretton Way High Wycombe, HP13 7UE, United Kingdom<br>
-          Website: www.atsasmun.com | Email: info@atsasmun.com<br>
-          Phone: +44 7487 302322
-        </p>
+      <td align="center">
+        <table width="800" cellpadding="0" cellspacing="0">
+          <tr>
+            <!-- Left Column with blue background and images -->
+            <td width="120" valign="top"
+              style="background-color:#ffffff; border-right: 4px solid #003c71; position: relative;">
+              <!-- Logo -->
+              <div style="text-align:center; padding: 20px 10px 0px 10px;">
+                <img
+                  src="https://ftueyhj.stripocdn.email/content/guids/CABINET_76edfd603639686b19c3686766c1f4512d98005c2183ca057d0378867dab713b/images/image_zAB.png"
+                  alt="Logo" style="width:100px; display:block; margin: 0 auto;" />
+              </div>
+              <p style="font-size: 8px; text-align:center; margin: 5px 0; color:#333333;">
+                <span style="color: #003c71;"> Diplomatic </span> Simulation <span style="color: #003c71;"> of </span>
+                <br> <span style="color: #003c71;"> the </span> United Nations
+              </p>
+              <div style="height: 520px;"></div>
+              <div style="width: 100%;">
+                <img
+                  src="https://ftueyhj.stripocdn.email/content/guids/CABINET_76edfd603639686b19c3686766c1f4512d98005c2183ca057d0378867dab713b/images/whatsapp_image_20250409_at_111009_97810a2aremovebgpreview.png"
+                  alt="Leaf" style="width:85%; display: block;" />
+              </div>
+            </td>
+
+            <!-- Right Column with Content -->
+            <td valign="top"
+              style="padding: 20px 15px; font-family: Arial, sans-serif; font-size:12px; line-height: 1.6;">
+              <h2 style="text-align: center; margin: 0; font-size: 18px; color: #26427e;">
+                LETTER OF ACCEPTANCE
+              </h2>
+              <p style="text-align: center; font-weight: bold; margin: 30px 0; color:#333333;">
+                CONGRATULATIONS
+              </p>
+
+              <p style="color:#333333;">
+                Dear Applicant,<br /><br />
+                We are grateful to inform you that you have been selected to join the Atsas International MUN ${desname}
+                2025 United Nations Simulation Conference Crafting Future Leaders in the Post-Pandemic Era, to be held
+                from ${date} 2025 in ${desname}.
+              </p>
+
+              <p style="color:#333333;">
+                Atsas Creation International is a High Wycombe, UK Based Diplomatic Simulation Organizer which serves
+                as a platform for Young Leaders and Change makers to exchange ideas and resolve the most challenging
+                global issues.
+              </p>
+
+              <p style="color:#333333;">We are pleased to accept and invite you, with detailed information as follows:</p>
+         
+              <p style="color:#333333;">
+                <strong>Name:</strong> ${userName}<br />
+                <strong>Duration of stay:</strong> ${date} 2025<br />
+                <strong>Venue:</strong> ${Hotel} ${desname} <br />
+                <strong>Destination:</strong> ${desname}
+              </p>
+
+              <p style="color:#333333;">
+                <em>You are requested to pay your delegate fee in order to become a confirmed delegate at Atsasmun ${country}
+                  on the following link:</em><br />
+                <a href="https://www.atsasmun.com/${payment}/1?userid=${userId}" style="color:#003c71;">
+                  https://www.atsasmun.com/${payment}
+                </a>
+              </p>
+
+              <p style="font-size: 10px; color: #666; text-align: center; margin-top: 300px;">
+                Address: 42 Heneretton Way High Wycombe, HP13 7UE, United Kingdom<br />
+                Website: www.atsasmun.com | Email: info@atsasmun.com<br />
+                Phone: +44 7487 302322
+              </p>
+            </td>
+          </tr>
+        </table>
       </td>
     </tr>
   </table>
 
-  <table>
+  <table width="100%" cellpadding="0" cellspacing="0" style="background-color:#fff; margin-top: 50px;">
     <tr>
-      <td class="left-column">
-        <img src="https://ftueyhj.stripocdn.email/content/guids/CABINET_76edfd603639686b19c3686766c1f4512d98005c2183ca057d0378867dab713b/images/image_zAB.png" alt="Logo" />
-        <p><span style="color: #003c71;">Diplomatic</span> Simulation <span style="color: #003c71;">of</span><br><span style="color: #003c71;">the</span> United Nations</p>
-        <div style="height: 150px;"></div>
-        <img class="leaf-image" style="margin-top: 420px;" src="https://ftueyhj.stripocdn.email/content/guids/CABINET_76edfd603639686b19c3686766c1f4512d98005c2183ca057d0378867dab713b/images/whatsapp_image_20250409_at_111009_97810a2aremovebgpreview.png" alt="Leaf" />
-      </td>
-      <td>
-        <ul>
-          <li>Each participant will be responsible for his/her visa fee and flight ticket to and from ${desname}.</li>
-          <li>We will accommodate your Visa Invitation Letter.</li>
-          <li>We provide visa services for ${desname}.</li>
-          <li>Hotel check-in will be on ${cheackoutdate} except for those who will be taking the Full Experience Package.</li>
-          <li>The committee will provide accommodation (including stay, meals, local transportation and T-shirts) to the participants with Accommodation and Full Experience packages during the event.</li>
-          <li>Before departure, please ensure you are carrying the following mandatory items:
-            <ul>
-              <li>Valid Passport</li>
-              <li>Valid Visa</li>
-            </ul>
-          </li>
-        </ul>
-        <p>We would like to thank you in advance for your cooperation and kind attention. Looking forward to seeing you in ${desname}</p>
-        <p>Regards</p>
-        <div class="signature">
-          <img src="https://ftueyhj.stripocdn.email/content/guids/CABINET_2931b97566d3407768315cf288299eaf675e4b98b62ac690766b987c273adeb9/images/image_gkX.png" alt="Signature" />
-          <img src="https://ftueyhj.stripocdn.email/content/guids/CABINET_2931b97566d3407768315cf288299eaf675e4b98b62ac690766b987c273adeb9/images/stamp_atsasmun.png" alt="Stamp" />
-        </div>
-        <p style="margin-top: 6px; font-weight: bold;">
-          Fasih Ur Rehman<br>
-          <span style="font-weight: normal">info@atsasmun.com<br>
-            Office of the Secretariat<br>
-            ATSAS International MUN</span>
-        </p>
-        <p class="footer">
-          Address: 42 Heneretton Way High Wycombe, HP13 7UE, United Kingdom<br>
-          Website: www.atsasmun.com | Email: info@atsasmun.com<br>
-          Phone: +44 7487 302522
-        </p>
+      <td align="center">
+        <table width="800" cellpadding="0" cellspacing="0">
+          <tr>
+            <!-- Left Column with blue background and images -->
+            <td width="120" valign="top"
+              style="background-color:#ffffff; border-right: 4px solid #003c71; position: relative;">
+              <!-- Logo -->
+              <div style="text-align:center; padding: 40px 10px 0px 10px;">
+                <img
+                  src="https://ftueyhj.stripocdn.email/content/guids/CABINET_76edfd603639686b19c3686766c1f4512d98005c2183ca057d0378867dab713b/images/image_zAB.png"
+                  alt="Logo" style="width:100px; display:block; margin: 0 auto;" />
+              </div>
+              <p style="font-size: 8px; text-align:center; margin: 5px 0; color:#333333;">
+                <span style="color: #003c71;"> Diplomatic </span> Simulation <span style="color: #003c71;"> of </span>
+                <br> <span style="color: #003c71;"> the </span> United Nations
+              </p>
+              <div style="height: 130px;"></div>
+              <div style="width: 100%; margin-top: 420px;">
+                <img
+                  src="https://ftueyhj.stripocdn.email/content/guids/CABINET_76edfd603639686b19c3686766c1f4512d98005c2183ca057d0378867dab713b/images/whatsapp_image_20250409_at_111009_97810a2aremovebgpreview.png"
+                  alt="Leaf" style="width:85%; display: block;" />
+              </div>
+            </td>
+
+            <!-- Right Column with Content -->
+            <td valign="top"
+              style="padding: 40px 15px; font-family: Arial, sans-serif; font-size: 12px; line-height: 1.6;">
+              <ul style="padding-left: 15px; margin-top: 0; color:#333333; ">
+                <li>
+                  Each participant will be responsible for his/her visa fee
+                  and flight ticket to and from ${desname}.
+                </li>
+                <li>
+                  We will accommodate your Visa Invitation Letter.
+                </li>
+                <li>
+                  We provide visa services for ${desname}.
+                </li>
+                <li>
+                  Hotel check-in will be on ${cheackoutdate} except for those who will be taking the Full
+                  Experience Package.
+                </li>
+                <li>
+                  The committee will provide accommodation (including stay,
+                  meals, local transportation and T-shirts) to the
+                  participants with Accommodation and Full Experience
+                  packages during the event.
+                </li>
+                <li>
+                  Before departure, please ensure you are carrying the
+                  following mandatory items on you:
+                </li>
+                <li>Valid Passport</li>
+                <li>Valid Visa</li>
+              </ul>
+
+              <p style="margin-top: 20px; color:#333333;">
+                We would like to thank you in advance for your cooperation and
+                kind attention. Looking forward to seeing you in ${desname}
+              </p>
+
+              <p style="margin-top: 30px">Regards</p>
+              <table cellpadding="0" cellspacing="0" border="0" >
+                <tr>
+                  <td style=" padding: 0; margin: 0; vertical-align: middle;">
+                    <img
+                      src="https://ftueyhj.stripocdn.email/content/guids/CABINET_2931b97566d3407768315cf288299eaf675e4b98b62ac690766b987c273adeb9/images/image_gkX.png"
+                      alt="Signature"
+                      style=" max-width: 70px; height: auto; display: inline-block; vertical-align: middle;"/>
+                  </td>
+                  <td style=" padding: 0; margin: 0; vertical-align: middle;">
+                    <img
+                      src="https://ftueyhj.stripocdn.email/content/guids/CABINET_2931b97566d3407768315cf288299eaf675e4b98b62ac690766b987c273adeb9/images/stamp_atsasmun.png"
+                      alt="Stamp"
+                      style=" max-width: 80px; height: auto; display: inline-block; vertical-align: middle;"/>
+                  </td>
+                </tr>
+              </table>
+
+              <p style="margin-top: 6px; font-weight: bold; color:#333333;">
+                Fasih Ur Rehman<br />
+                <span style="font-weight: normal">info@atsasmun.com<br />
+                  Office of the Secretariat<br />
+                  ATSAS International MUN</span>
+              </p>
+
+               <p style="font-size: 10px; color: #666; text-align: center; margin-top: 300px;">
+                Address: 42 Heneretton Way High Wycombe, HP13 7UE, United Kingdom<br />
+                Website: www.atsasmun.com | Email: info@atsasmun.com<br />
+                Phone: +44 7487 302522
+              </p>
+            </td>
+          </tr>
+        </table>
       </td>
     </tr>
   </table>
+
 </body>
 
 </html>
