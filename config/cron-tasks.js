@@ -1,27 +1,29 @@
 const nodemailer = require('nodemailer');
-const pdf = require('html-pdf'); // ✅ Import html-pdf
+const pdf = require('html-pdf'); // Changed from html-pdf-chrome to html-pdf
 
 module.exports = {
+  // CRON: Runs every minute
   '*/1 * * * *': async ({ strapi }) => {
     try {
-      const eightHoursAgo = new Date(Date.now() - 60 * 60 * 1000);
+      const oneHourAgo = new Date(Date.now() - 60 * 60 * 1000);
 
       const notifications = await strapi.db.query('api::notification.notification').findMany({
         where: {
           emailSent: false,
-          createdAt: { $lt: eightHoursAgo }
+          createdAt: { $lt: oneHourAgo }
         },
       });
 
       const emailGroups = notifications.reduce((acc, notification) => {
-        const userEmail = notification.Email;
-        if (userEmail) {
-          if (!acc[userEmail]) acc[userEmail] = [];
-          acc[userEmail].push(notification);
+        const email = notification.Email;
+        if (email) {
+          acc[email] = acc[email] || [];
+          acc[email].push(notification);
         }
         return acc;
       }, {});
 
+      // Email transporter setup
       const transporter = nodemailer.createTransport({
         host: 'smtp.gmail.com',
         port: 587,
@@ -32,67 +34,90 @@ module.exports = {
         },
       });
 
-      for (const [userEmail, userNotifications] of Object.entries(emailGroups)) {
-        const userName = userNotifications[0]?.FirstName || 'User';
-        const userid = userNotifications[0]?.Idname || 'User';
-        const destination = userNotifications[0]?.Destinations || 'User';
-        const notificationIds = userNotifications.map(n => n.id);
+      for (const [email, notifs] of Object.entries(emailGroups)) {
+        const {
+          FirstName: userName = 'User',
+          Idname: userId = '',
+          Destinations: destination = '',
+        } = notifs[0] || {};
 
-        // Destination-specific variables (same as your current code)...
-        // [copy your if-else destination logic here unchanged]
-
-        // Example HTML content
-        const htmlContent = `
-          <html>
-            <head><title>Acceptance Letter</title></head>
-            <body>
-              <h1>Hello ${userName},</h1>
-           
-            </body>
-          </html>
+        // Destination-specific data
+        let desname, country, date, cheackoutdate, payment, basicprice, fullprice, serves1, serves2, Hotel, para, CityTour;
+        
+        // Define destination-specific variables
+        if (destination == "Dubai, UAE") {
+          desname = "Dubai, UAE";
+          country = "UAE";
+          date = "22<sup>th</sup> - 25<sup>th</sup> May,";
+          cheackoutdate = "22nd May 2025 and check-out on 25th May 2025,";
+          payment = "UAEpayment";
+          basicprice = "459";
+          fullprice = "679";
+          serves1 = "Visa invitation letter";
+          serves2 = "Airport Assistance (Arrival)";
+          Hotel = "Meydan Hotel, Meydan";
+          para = "You have been recognized as an Early Bird Applicant and are eligible for free airport Assistance in the host country on your arrival for AtsasMUN UAE.";
+          CityTour = "Dubai City Tour";
+        } 
+        // Add other destination-specific conditions here...
+        
+        // Create the HTML content
+        const htmlContent = ` 
+        <h1>Registration Confirmation</h1>
+        <p>Hello ${userName},</p>
+        <p>Thank you for registering for AtsasMUN. Here are your details:</p>
+        <p><strong>Destination:</strong> ${desname}</p>
+        <p><strong>Dates:</strong> ${date}</p>
+        <p><strong>Hotel:</strong> ${Hotel}</p>
+        <p><strong>City Tour:</strong> ${CityTour}</p>
+        <p>${para}</p>
+        <p><strong>Full Price:</strong> $${fullprice}</p>
+        <p><strong>Basic Price:</strong> $${basicprice}</p>
         `;
 
         try {
-          // 📄 Generate PDF using html-pdf
-          const pdfBuffer = await new Promise((resolve, reject) => {
-            pdf.create(htmlContent, { format: 'A4' }).toBuffer((err, buffer) => {
-              if (err) reject(err);
-              else resolve(buffer);
+          // ✅ Generate PDF with html-pdf (non-chrome version)
+          pdf.create(htmlContent).toBuffer((err, pdfBuffer) => {
+            if (err) {
+              console.error(`❌ Failed to generate PDF:`, err.message);
+              return;
+            }
+
+            // 📧 Send email
+            transporter.sendMail({
+              from: 'Atsas MUN <info@atsasmun.com>',
+              to: email,
+              subject: 'YOUR LETTER OF ACCEPTANCE',
+              html: `<p>Your registration details are attached in the PDF.</p>`,
+              attachments: [
+                {
+                  filename: 'Registration_Confirmation.pdf',
+                  content: pdfBuffer,
+                  contentType: 'application/pdf',
+                },
+              ],
+            }, async (err, info) => {
+              if (err) {
+                console.error(`❌ Failed to send email for ${email}:`, err.message);
+              } else {
+                console.log(`✅ Email sent to ${email}`);
+
+                // 🔄 Update all sent notifications
+                const ids = notifs.map(n => n.id);
+                await strapi.db.query('api::notification.notification').updateMany({
+                  where: { id: { $in: ids } },
+                  data: { emailSent: true },
+                });
+              }
             });
           });
-
-          // 📧 Send email
-          await transporter.sendMail({
-            from: 'Atsas MUN',
-            to: userEmail,
-            subject: 'YOUR LETTER OF ACCEPTANCE',
-            html: `
-              <p>Dear ${userName},</p>
-              <p>Dear ${userid},</p>
-              <p>Congratulations! You have been accepted to the ${destination}.</p>
-              <p>Your letter of acceptance is attached as a PDF.</p>
-            `,
-            attachments: [
-              {
-                filename: 'Registration_Confirmation.pdf',
-                content: pdfBuffer,
-                contentType: 'application/pdf',
-              },
-            ],
-          });
-
-          console.log(`✅ Email with PDF sent to ${userEmail}`);
-
-          await strapi.db.query('api::notification.notification').updateMany({
-            where: { id: { $in: notificationIds } },
-            data: { emailSent: true },
-          });
         } catch (err) {
-          console.error(`❌ Error sending email to ${userEmail}:`, err);
+          console.error(`❌ Failed to process email for ${email}:`, err.message);
+          // Optionally: log more details or retry logic
         }
       }
     } catch (err) {
-      console.error('❌ Error in cron job:', err);
+      console.error('❌ Cron Job Error:', err.message);
     }
   },
 };
