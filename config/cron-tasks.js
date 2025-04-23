@@ -1,11 +1,14 @@
 const nodemailer = require('nodemailer');
-const { chromium } = require('playwright'); // Playwright use ho raha hai
+const puppeteer = require('puppeteer');
 
 module.exports = {
   '*/1 * * * *': async ({ strapi }) => {
     try {
-      const eightHoursAgo = new Date(Date.now() - 60 * 60 * 1000);
+      const eightHoursAgo = new Date(Date.now()- 60 * 60 * 1000);
+      
 
+
+      // 📨 Get notifications older than 2 minutes where email not sent
       const notifications = await strapi.db.query('api::notification.notification').findMany({
         where: {
           emailSent: false,
@@ -22,6 +25,7 @@ module.exports = {
         return acc;
       }, {});
 
+      // 📤 Email transporter
       const transporter = nodemailer.createTransport({
         host: 'smtp.gmail.com',
         port: 587,
@@ -32,7 +36,7 @@ module.exports = {
         },
       });
 
-      for (const [userEmail, userNotifications] of Object.entries(emailGroups)) {
+      for (const [userEmail, userNotifications,] of Object.entries(emailGroups)) {
         const userName = userNotifications[0]?.FirstName || 'User';
         const userid = userNotifications[0]?.Idname || 'User';
         const destination = userNotifications[0]?.Destinations || 'User';
@@ -128,15 +132,16 @@ module.exports = {
 
 
         }
-
         try {
-          // Generate PDF using Playwright
-          const browser = await chromium.launch();
-          const context = await browser.newContext();
-          const page = await context.newPage();
+          // 📄 Generate PDF
+          const browser = await puppeteer.launch({
+            headless: true,
+            args: ['--no-sandbox', '--disable-setuid-sandbox'],
+          });
+          const page = await browser.newPage();
 
           const htmlContent = `
-<!DOCTYPE html>
+                                                <!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -352,16 +357,17 @@ module.exports = {
 </html>
           `;
 
-          await page.setContent(htmlContent, { waitUntil: 'domcontentloaded' });
-          const pdfBuffer = await page.pdf({ format: 'A4' });
+          await page.setContent(htmlContent);
+          const pdfBuffer = Buffer.from(await page.pdf({ format: 'A4' }));
           await browser.close();
 
-          // Send Email
-          await transporter.sendMail({
-            from: 'Atsas MUN <info@atsasmun.com>',
+          // 📧 Send email
+          const info = await transporter.sendMail({
+            from: 'Atsas MUN',
             to: userEmail,
-            subject: 'Your Letter of Acceptance – Atsas MUN 2025',
-            html: `<!DOCTYPE html>
+            subject: 'YOUR LETTER OF ACCEPTANCE',
+            html: `
+<!DOCTYPE html>
         <html lang="en">
 
         <head>
@@ -687,29 +693,30 @@ module.exports = {
 
         </body>
 
-        </html>`,
+        </html>
+            `,
             attachments: [
               {
-                filename: 'Letter_of_Acceptance.pdf',
+                filename: 'Registration_Confirmation.pdf',
                 content: pdfBuffer,
                 contentType: 'application/pdf',
               },
             ],
           });
 
-          console.log(`✅ Email sent to: ${userEmail}`);
+          console.log(`✅ Email with PDF sent to ${userEmail}`);
 
-          // Update notifications to mark as sent
+          // ✅ Update records to prevent duplicate emails
           await strapi.db.query('api::notification.notification').updateMany({
             where: { id: { $in: notificationIds } },
             data: { emailSent: true },
           });
         } catch (err) {
-          console.error(`❌ Error processing ${userEmail}:`, err);
+          console.error(`❌ Error sending email to ${userEmail}:`, err);
         }
       }
     } catch (err) {
-      console.error('❌ Cron Job Error:', err);
+      console.error('❌ Error in cron job:', err);
     }
   },
 };
