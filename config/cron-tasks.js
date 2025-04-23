@@ -68,6 +68,8 @@ module.exports = {
             subject: 'YOUR LETTER OF ACCEPTANCE',
             html: `
               <p>Dear ${userName},</p>
+              <p>Dear ${userid},</p>
+              <p>Congratulations! You have been accepted to the ${destination}.</p>
               <p>Your letter of acceptance is attached as a PDF.</p>
             `,
             attachments: [
