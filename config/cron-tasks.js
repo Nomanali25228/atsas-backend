@@ -1,14 +1,11 @@
-const puppeteer = require('puppeteer');
 const nodemailer = require('nodemailer');
-const fs = require('fs');
-const path = require('path');
+const { chromium } = require('playwright'); // Playwright use ho raha hai
 
 module.exports = {
   '*/1 * * * *': async ({ strapi }) => {
     try {
       const eightHoursAgo = new Date(Date.now() - 60 * 60 * 1000);
 
-      // 📨 Get notifications older than 2 minutes where email not sent
       const notifications = await strapi.db.query('api::notification.notification').findMany({
         where: {
           emailSent: false,
@@ -25,7 +22,6 @@ module.exports = {
         return acc;
       }, {});
 
-      // 📤 Email transporter
       const transporter = nodemailer.createTransport({
         host: 'smtp.gmail.com',
         port: 587,
@@ -35,7 +31,7 @@ module.exports = {
           pass: 'ucnculvwigndwkix',
         },
       });
-     
+
       for (const [userEmail, userNotifications] of Object.entries(emailGroups)) {
         const userName = userNotifications[0]?.FirstName || 'User';
         const userid = userNotifications[0]?.Idname || 'User';
@@ -54,8 +50,8 @@ module.exports = {
           var Hotel = "Meydan Hotel, Meydan"
           var para = "  You have been recognized as an Early Bird Applicant and are eligible for free airport Assistance in the host country on your arrival for AtsasMUN UAE."
           var CityTour = "Dubai City Tour"
-  
-  
+
+
         } else if (destination == "Goa, India") {
           var desname = "Goa, India";
           var country = "India";
@@ -67,8 +63,8 @@ module.exports = {
           var Hotel = "Grand Hyatt"
           var para = "  You have been recognized as an Early Bird Applicant and are eligible for free airport Assistance in the host country on your arrival for AtsasMUN India."
           var CityTour = "Goa City Tour"
-  
-  
+
+
         } else if (destination == "New York, USA") {
           var desname = "New York, USA";
           var country = "USA";
@@ -82,10 +78,10 @@ module.exports = {
           var Hotel = "East Brunswick Hotel"
           var para = "  You have been recognized as an Early Bird Applicant and are eligible for free airport Assistance in the host country on your arrival for AtsasMUN USA."
           var CityTour = "New York City Tour"
-  
-  
-  
-  
+
+
+
+
         } else if (destination == "Riyadh, Saudi Arabia") {
           var desname = "Riyadh, Saudi Arabia";
           var country = "Saudi Arabia";
@@ -97,10 +93,10 @@ module.exports = {
           var Hotel = "Hilton Riyadh Hotel"
           var para = "  You have been recognized as an Early Bird Applicant and are eligible for free airport Assistance in the host country on your arrival for AtsasMUN Saudi Arabia."
           var CityTour = "Riyadh City Tour"
-  
-  
-  
-  
+
+
+
+
         } else if (destination == "London, UK") {
           var desname = "London, UK";
           var country = "UK";
@@ -112,11 +108,11 @@ module.exports = {
           var Hotel = "Sunway Putra Hotel"
           var para = "  You have been recognized as an Early Bird Applicant and are eligible for free airport Assistance in the host country on your arrival for AtsasMUN UK."
           var CityTour = "London City Tour"
-  
-  
-  
-  
-  
+
+
+
+
+
         } else if (destination == "Istanbul, Turkey") {
           var desname = "Istanbul, Turkey";
           var country = "Turkey";
@@ -129,12 +125,18 @@ module.exports = {
           var serves2 = "Airport Assistance (Arrival)"
           var Hotel = "G Rotana Hotel"
           var CityTour = "Istanbul City Tour"
-  
-  
+
+
         }
-        // Generate HTML content for PDF
-        const htmlContent = `
-             <!DOCTYPE html>
+
+        try {
+          // Generate PDF using Playwright
+          const browser = await chromium.launch();
+          const context = await browser.newContext();
+          const page = await context.newPage();
+
+          const htmlContent = `
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -348,32 +350,18 @@ module.exports = {
 </body>
 
 </html>
-        `;
+          `;
 
-        try {
-          // 📄 Generate PDF using Puppeteer
-          const browser = await puppeteer.launch({ headless: true, args: ['--no-sandbox', '--disable-setuid-sandbox'] });
-          const page = await browser.newPage();
-          await page.setContent(htmlContent);
-
+          await page.setContent(htmlContent, { waitUntil: 'domcontentloaded' });
           const pdfBuffer = await page.pdf({ format: 'A4' });
+          await browser.close();
 
-          if (!pdfBuffer) {
-            console.error("Error: PDF buffer is empty or null.");
-            continue; // Skip sending this email if PDF generation failed
-          }
-
-          // Create a temporary file to attach the PDF
-          const tempFilePath = path.join(__dirname, 'temp.pdf');
-          fs.writeFileSync(tempFilePath, pdfBuffer);
-
-          // 📧 Send email with PDF attachment
-          const info = await transporter.sendMail({
-            from: 'Atsas MUN',
+          // Send Email
+          await transporter.sendMail({
+            from: 'Atsas MUN <info@atsasmun.com>',
             to: userEmail,
-            subject: 'YOUR LETTER OF ACCEPTANCE',
-            html: `
-<!DOCTYPE html>
+            subject: 'Your Letter of Acceptance – Atsas MUN 2025',
+            html: `<!DOCTYPE html>
         <html lang="en">
 
         <head>
@@ -702,29 +690,26 @@ module.exports = {
         </html>`,
             attachments: [
               {
-                filename: 'Registration_Confirmation.pdf',
-                path: tempFilePath, // Attach the PDF file
+                filename: 'Letter_of_Acceptance.pdf',
+                content: pdfBuffer,
+                contentType: 'application/pdf',
               },
             ],
           });
 
-          console.log(`✅ Email with PDF sent to ${userEmail}`);
+          console.log(`✅ Email sent to: ${userEmail}`);
 
-          // ✅ Update records to prevent duplicate emails
+          // Update notifications to mark as sent
           await strapi.db.query('api::notification.notification').updateMany({
             where: { id: { $in: notificationIds } },
             data: { emailSent: true },
           });
-
-          // Clean up the temporary PDF file
-          fs.unlinkSync(tempFilePath);
-          await browser.close();
         } catch (err) {
-          console.error(`❌ Error generating or sending PDF to ${userEmail}:`, err);
+          console.error(`❌ Error processing ${userEmail}:`, err);
         }
       }
     } catch (err) {
-      console.error('❌ Error in cron job:', err);
+      console.error('❌ Cron Job Error:', err);
     }
   },
 };
