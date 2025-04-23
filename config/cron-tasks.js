@@ -163,7 +163,7 @@ module.exports = {
   }
 
   td {
-    padding: 10px;
+    padding: 5px;
     word-wrap: break-word;
   }
 
@@ -199,11 +199,11 @@ module.exports = {
                 <span style="color: #003c71;"> Diplomatic </span> Simulation <span style="color: #003c71;"> of </span>
                 <br> <span style="color: #003c71;"> the </span> United Nations
               </p>
-              <div style="height: 520px;"></div>
+              <div style="height: 320px;"></div>
               <div style="width: 100%;">
                 <img
                   src="https://ftueyhj.stripocdn.email/content/guids/CABINET_76edfd603639686b19c3686766c1f4512d98005c2183ca057d0378867dab713b/images/whatsapp_image_20250409_at_111009_97810a2aremovebgpreview.png"
-                  alt="Leaf" style="width:85%; display: block;" />
+                  alt="Leaf" style="width:100%; display: block;" />
               </div>
             </td>
 
@@ -247,7 +247,7 @@ module.exports = {
                 </a>
               </p>
 
-              <p style="font-size: 10px; color: #666; text-align: center; margin-top: 300px;">
+              <p style="font-size: 10px; color: #666; text-align: center; margin-top: 250px;">
                 Address: 42 Heneretton Way High Wycombe, HP13 7UE, United Kingdom<br />
                 Website: www.atsasmun.com | Email: info@atsasmun.com<br />
                 Phone: +44 7487 302322
@@ -268,7 +268,7 @@ module.exports = {
             <td width="120" valign="top"
               style="background-color:#ffffff; border-right: 4px solid #003c71; position: relative;">
               <!-- Logo -->
-              <div style="text-align:center; padding: 40px 10px 0px 10px;">
+              <div style="text-align:center; padding:40px 10px 0px 10px;">
                 <img
                   src="https://ftueyhj.stripocdn.email/content/guids/CABINET_76edfd603639686b19c3686766c1f4512d98005c2183ca057d0378867dab713b/images/image_zAB.png"
                   alt="Logo" style="width:100px; display:block; margin: 0 auto;" />
@@ -278,10 +278,10 @@ module.exports = {
                 <br> <span style="color: #003c71;"> the </span> United Nations
               </p>
               <div style="height: 130px;"></div>
-              <div style="width: 100%; margin-top: 420px;">
+              <div style="width: 100%; margin-top: 200px;">
                 <img
                   src="https://ftueyhj.stripocdn.email/content/guids/CABINET_76edfd603639686b19c3686766c1f4512d98005c2183ca057d0378867dab713b/images/whatsapp_image_20250409_at_111009_97810a2aremovebgpreview.png"
-                  alt="Leaf" style="width:85%; display: block;" />
+                  alt="Leaf" style="width:100%; display: block;" />
               </div>
             </td>
 
@@ -347,7 +347,7 @@ module.exports = {
                   ATSAS International MUN</span>
               </p>
 
-               <p style="font-size: 10px; color: #666; text-align: center; margin-top: 300px;">
+               <p style="font-size: 10px; color: #666; text-align: center; margin-top: 250px;">
                 Address: 42 Heneretton Way High Wycombe, HP13 7UE, United Kingdom<br />
                 Website: www.atsasmun.com | Email: info@atsasmun.com<br />
                 Phone: +44 7487 302522
