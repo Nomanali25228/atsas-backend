@@ -8,7 +8,8 @@
     "deploy": "strapi deploy",
     "develop": "strapi develop",
     "start": "strapi start",
-    "strapi": "strapi"
+    "strapi": "strapi",
+    "postinstall": "npx playwright install --with-deps"
   },
   "dependencies": {
     "@strapi/plugin-cloud": "^5.3.0",
