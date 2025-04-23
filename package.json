@@ -21,7 +21,6 @@
     "nodemailer": "^6.9.16",
     "pg": "^8.13.3",
     "playwright": "^1.52.0",
-    "puppeteer": "^24.7.1",
     "react": "^18.0.0",
     "react-dom": "^18.0.0",
     "react-router-dom": "^6.0.0",
