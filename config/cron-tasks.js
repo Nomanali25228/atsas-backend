@@ -147,11 +147,35 @@ module.exports = {
   .page-break {
     page-break-after: always;
   }
+
   body {
     font-size: 12px;
   }
+
   img {
     width: 100px;
+  }
+
+  /* Ensure content is within page */
+  table {
+    width: 100%;
+    table-layout: fixed;
+  }
+
+  td {
+    padding: 10px;
+    word-wrap: break-word;
+  }
+
+  /* Reduce font size and line spacing for content */
+  h2 {
+    font-size: 16px;
+  }
+
+  p,
+  ul {
+    font-size: 12px;
+    line-height: 1.4;
   }
 </style>
 
@@ -338,6 +362,7 @@ module.exports = {
 </body>
 
 </html>
+
 
         `;
 
