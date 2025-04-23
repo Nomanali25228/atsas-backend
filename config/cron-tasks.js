@@ -406,7 +406,7 @@ module.exports = {
                             Please find attached the official acceptance letter in this email.
                         </p>
                         <p style="font-size: 0.9rem; margin: 5px 40px 10px 20px; color: white;">
-                        ${para}
+                        ${para?para:""}
                         </p>
                     </td>
                 </tr>
