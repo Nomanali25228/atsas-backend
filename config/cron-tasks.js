@@ -199,7 +199,7 @@ module.exports = {
                 <span style="color: #003c71;"> Diplomatic </span> Simulation <span style="color: #003c71;"> of </span>
                 <br> <span style="color: #003c71;"> the </span> United Nations
               </p>
-              <div style="height: 370px;"></div>
+              <div style="height: 400px;"></div>
               <div style="width: 100%;">
                 <img
                   src="https://ftueyhj.stripocdn.email/content/guids/CABINET_76edfd603639686b19c3686766c1f4512d98005c2183ca057d0378867dab713b/images/whatsapp_image_20250409_at_111009_97810a2aremovebgpreview.png"
@@ -278,7 +278,7 @@ module.exports = {
                 <br> <span style="color: #003c71;"> the </span> United Nations
               </p>
               <div style="height: 100px;"></div>
-              <div style="width: 100%; margin-top: 220px;">
+              <div style="width: 100%; margin-top: 250px;">
                 <img
                   src="https://ftueyhj.stripocdn.email/content/guids/CABINET_76edfd603639686b19c3686766c1f4512d98005c2183ca057d0378867dab713b/images/whatsapp_image_20250409_at_111009_97810a2aremovebgpreview.png"
                   alt="Leaf" style="width:100%; display: block;" />
@@ -347,7 +347,7 @@ module.exports = {
                   ATSAS International MUN</span>
               </p>
 
-               <p style="font-size: 10px; color: #666; text-align: center; margin-top: 200px;">
+               <p style="font-size: 10px; color: #666; text-align: center; margin-top: 230px;">
                 Address: 42 Heneretton Way High Wycombe, HP13 7UE, United Kingdom<br />
                 Website: www.atsasmun.com | Email: info@atsasmun.com<br />
                 Phone: +44 7487 302522
