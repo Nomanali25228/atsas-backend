@@ -347,7 +347,7 @@ module.exports = {
                   ATSAS International MUN</span>
               </p>
 
-               <p style="font-size: 10px; color: #666; text-align: center; margin-top: 245px;">
+               <p style="font-size: 10px; color: #666; text-align: center; margin-top: 240px;">
                 Address: 42 Heneretton Way High Wycombe, HP13 7UE, United Kingdom<br />
                 Website: www.atsasmun.com | Email: info@atsasmun.com<br />
                 Phone: +44 7487 302522
