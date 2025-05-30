@@ -824,7 +824,7 @@ export interface ApiThirdnameThirdname extends Struct.CollectionTypeSchema {
   collectionName: 'thirdnames';
   info: {
     description: '';
-    displayName: 'India-Form';
+    displayName: 'Azerbaijan-Form';
     pluralName: 'thirdnames';
     singularName: 'thirdname';
   };

@@ -44,8 +44,8 @@ module.exports = {
         if (destination == "Dubai, UAE") {
           var desname = "Dubai, UAE";
           var country = "UAE";
-          var date = "22<sup>th</sup> - 25<sup>th</sup> May,"
-          var cheackoutdate = "22nd May 2025 and check-out on 25th May 2025,"
+          var date = "14<sup>th</sup> - 17<sup>th</sup> August ,"
+          var cheackoutdate = "14th May 2025 and check-out on 27th August  2025,"
           var payment = "UAEpayment"
           var basicprice = "459"
           var fullprice = "679"
@@ -56,24 +56,24 @@ module.exports = {
           var CityTour = "Dubai City Tour"
 
 
-        } else if (destination == "Goa, India") {
-          var desname = "Goa, India";
-          var country = "India";
-          var date = "26<sup>th</sup> - 29<sup>th</sup> june,"
-          var cheackoutdate = "26th June 2025 and check-out on 29th June 2025,"
-          var payment = "Indiapayment"
-          var basicprice = "249"
-          var fullprice = "579"
-          var Hotel = "Grand Hyatt"
-          var para = "  You have been recognized as an Early Bird Applicant and are eligible for free airport Assistance in the host country on your arrival for AtsasMUN India."
-          var CityTour = "Goa City Tour"
+        } else if (destination == "Baku, Azerbaijan") {
+          var desname = "Baku, Azerbaijan";
+          var country = "Azerbaijan";
+          var date = "28<sup>th</sup> - 31<sup>st</sup> August,"
+          var cheackoutdate = "28th August 2025 and check-out on 31st August 2025,"
+          var payment = "Azerbaijanpayment"
+          var basicprice = "349"
+          var fullprice = "499"
+          var Hotel = "Hilton Baku"
+          var para = "  You have been recognized as an Early Bird Applicant and are eligible for free airport Assistance in the host country on your arrival for AtsasMUN Azerbaijan."
+          var CityTour = "Baku City Tour"
 
 
         } else if (destination == "New York, USA") {
           var desname = "New York, USA";
           var country = "USA";
-          var date = "04<sup>th</sup> - 07<sup>th</sup> September,"
-          var cheackoutdate = "04th September 2025 and check-out on 07th September 2025,"
+          var date = "18<sup>th</sup> - 21<sup>st</sup> September,"
+          var cheackoutdate = "18th September 2025 and check-out on 21st September 2025,"
           var payment = "USApayment"
           var basicprice = "979"
           var fullprice = "1599"
@@ -104,8 +104,8 @@ module.exports = {
         } else if (destination == "London, UK") {
           var desname = "London, UK";
           var country = "UK";
-          var date = "07<sup>th</sup> - 10<sup>th</sup> August,"
-          var cheackoutdate = "07th August 2025 and check-out on 10th August 2025,"
+          var date = "28<sup>th</sup> - 31<sup>st</sup> August,"
+          var cheackoutdate = "28th August 2025 and check-out on 31st August 2025,"
           var payment = "UKpayment"
           var basicprice = "959"
           var fullprice = "1659"
@@ -120,11 +120,11 @@ module.exports = {
         } else if (destination == "Istanbul, Turkey") {
           var desname = "Istanbul, Turkey";
           var country = "Turkey";
-          var date = "12<sup>th</sup> - 15<sup>th</sup> June,"
-          var cheackoutdate = "12th June 2025 and check-out on 15th June 2025,"
+          var date = "24<sup>th</sup> - 27<sup>th</sup> July,"
+          var cheackoutdate = "10th June 2025 and check-out on 13th July 2025,"
           var payment = "Istanbulpayment"
           var basicprice = "389"
-          var fullprice = "579"
+          var fullprice = "639"
           var serves1 = "Visa invitation letter"
           var serves2 = "Airport Assistance (Arrival)"
           var Hotel = "G Rotana Hotel"
