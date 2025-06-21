@@ -44,8 +44,8 @@ module.exports = {
         if (destination == "Dubai, UAE") {
           var desname = "Dubai, UAE";
           var country = "UAE";
-          var date = "14<sup>th</sup> - 17<sup>th</sup> August ,"
-          var cheackoutdate = "14th May 2025 and check-out on 27th August  2025,"
+          var date = "11<sup>th</sup> - 14<sup>th</sup> September ,"
+          var cheackoutdate = "11th September 2025 and check-out on 14th September  2025,"
           var payment = "UAEpayment"
           var basicprice = "459"
           var fullprice = "679"
@@ -59,8 +59,8 @@ module.exports = {
         } else if (destination == "Baku, Azerbaijan") {
           var desname = "Baku, Azerbaijan";
           var country = "Azerbaijan";
-          var date = "28<sup>th</sup> - 31<sup>st</sup> August,"
-          var cheackoutdate = "28th August 2025 and check-out on 31st August 2025,"
+          var date = "6<sup>th</sup> - 9<sup>th</sup> November,"
+          var cheackoutdate = "6th November 2025 and check-out on 9th November 2025,"
           var payment = "Azerbaijanpayment"
           var basicprice = "349"
           var fullprice = "499"
@@ -72,8 +72,8 @@ module.exports = {
         } else if (destination == "New York, USA") {
           var desname = "New York, USA";
           var country = "USA";
-          var date = "18<sup>th</sup> - 21<sup>st</sup> September,"
-          var cheackoutdate = "18th September 2025 and check-out on 21st September 2025,"
+          var date = "25<sup>th</sup> - 28<sup>th</sup> September,"
+          var cheackoutdate = "25th September 2025 and check-out on 28th September 2025,"
           var payment = "USApayment"
           var basicprice = "979"
           var fullprice = "1599"
@@ -104,8 +104,8 @@ module.exports = {
         } else if (destination == "London, UK") {
           var desname = "London, UK";
           var country = "UK";
-          var date = "28<sup>th</sup> - 31<sup>st</sup> August,"
-          var cheackoutdate = "28th August 2025 and check-out on 31st August 2025,"
+          var date = "20<sup>th</sup> - 24<sup>th</sup> November,"
+          var cheackoutdate = "20th November 2025 and check-out on 24th November 2025,"
           var payment = "UKpayment"
           var basicprice = "959"
           var fullprice = "1659"
@@ -120,8 +120,8 @@ module.exports = {
         } else if (destination == "Istanbul, Turkey") {
           var desname = "Istanbul, Turkey";
           var country = "Turkey";
-          var date = "24<sup>th</sup> - 27<sup>th</sup> July,"
-          var cheackoutdate = "10th June 2025 and check-out on 13th July 2025,"
+          var date = "28<sup>th</sup> - 31<sup>st</sup> August,"
+          var cheackoutdate = "28th August 2025 and check-out on 31st August 2025,"
           var payment = "Istanbulpayment"
           var basicprice = "389"
           var fullprice = "639"
