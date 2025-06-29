@@ -44,8 +44,8 @@ module.exports = {
         if (destination == "Dubai, UAE") {
           var desname = "Dubai, UAE";
           var country = "UAE";
-          var date = "11<sup>th</sup> - 14<sup>th</sup> September ,"
-          var cheackoutdate = "11th September 2025 and check-out on 14th September  2025,"
+          var date = "2<sup>nd</sup> - 5<sup>th</sup> October 2025 ,"
+          var cheackoutdate = "2nd September 2025 and check-out on 5th October  2025,"
           var payment = "UAEpayment"
           var basicprice = "459"
           var fullprice = "679"
@@ -59,7 +59,7 @@ module.exports = {
         } else if (destination == "Baku, Azerbaijan") {
           var desname = "Baku, Azerbaijan";
           var country = "Azerbaijan";
-          var date = "6<sup>th</sup> - 9<sup>th</sup> November,"
+          var date = "6<sup>th</sup> - 9<sup>th</sup> November 2025,"
           var cheackoutdate = "6th November 2025 and check-out on 9th November 2025,"
           var payment = "Azerbaijanpayment"
           var basicprice = "349"
@@ -72,8 +72,8 @@ module.exports = {
         } else if (destination == "New York, USA") {
           var desname = "New York, USA";
           var country = "USA";
-          var date = "25<sup>th</sup> - 28<sup>th</sup> September,"
-          var cheackoutdate = "25th September 2025 and check-out on 28th September 2025,"
+          var date = "12<sup>th</sup> - 15<sup>th</sup> February 2026,"
+          var cheackoutdate = "12th February 2026 and check-out on 12th February 2026,"
           var payment = "USApayment"
           var basicprice = "979"
           var fullprice = "1599"
@@ -89,7 +89,7 @@ module.exports = {
         } else if (destination == "Riyadh, Saudi Arabia") {
           var desname = "Riyadh, Saudi Arabia";
           var country = "Saudi Arabia";
-          var date = "16<sup>th</sup> - 19<sup>th</sup> october,"
+          var date = "16<sup>th</sup> - 19<sup>th</sup> october 2025,"
           var cheackoutdate = "16th October 2025 and check-out on 19th October 2025,"
           var payment = "Saudipayment"
           var basicprice = "649"
@@ -104,7 +104,7 @@ module.exports = {
         } else if (destination == "London, UK") {
           var desname = "London, UK";
           var country = "UK";
-          var date = "20<sup>th</sup> - 24<sup>th</sup> November,"
+          var date = "20<sup>th</sup> - 24<sup>th</sup> November 2025,"
           var cheackoutdate = "20th November 2025 and check-out on 24th November 2025,"
           var payment = "UKpayment"
           var basicprice = "959"
@@ -120,8 +120,8 @@ module.exports = {
         } else if (destination == "Istanbul, Turkey") {
           var desname = "Istanbul, Turkey";
           var country = "Turkey";
-          var date = "28<sup>th</sup> - 31<sup>st</sup> August,"
-          var cheackoutdate = "28th August 2025 and check-out on 31st August 2025,"
+          var date = "11<sup>th</sup> - 14<sup>th</sup> September 2025,"
+          var cheackoutdate = "11th September 2025 and check-out on 14th September 2026,"
           var payment = "Istanbulpayment"
           var basicprice = "389"
           var fullprice = "639"
@@ -221,7 +221,7 @@ module.exports = {
                 Dear Applicant,<br /><br />
                 We are grateful to inform you that you have been selected to join the Atsas International MUN ${desname}
                 2025 United Nations Simulation Conference Crafting Future Leaders in the Post-Pandemic Era, to be held
-                from ${date} 2025 in ${desname}.
+                from ${date} in ${desname}.
               </p>
 
               <p style="color:#333333;">
@@ -234,7 +234,7 @@ module.exports = {
          
               <p style="color:#333333;">
                 <strong>Name:</strong> ${userName}<br />
-                <strong>Duration of stay:</strong> ${date} 2025<br />
+                <strong>Duration of stay:</strong> ${date} <br />
                 <strong>Venue:</strong> ${Hotel} ${desname} <br />
                 <strong>Destination:</strong> ${desname}
               </p>
