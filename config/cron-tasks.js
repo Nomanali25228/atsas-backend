@@ -39,7 +39,12 @@ module.exports = {
           FirstName: userName = 'User',
           Idname: userId = '',
           Destinations: destination = '',
-        } = notifs[0] || {};
+startdate: startdate = '',
+ enddate: enddate = '',
+          month: month = '',
+          year: year = '',
+
+  } = notifs[0] || {};
 
         if (destination == "Dubai, UAE") {
           var desname = "Dubai, UAE";
@@ -221,7 +226,7 @@ module.exports = {
                 Dear Applicant,<br /><br />
                 We are grateful to inform you that you have been selected to join the Atsas International MUN ${desname}
                 2025 United Nations Simulation Conference Crafting Future Leaders in the Post-Pandemic Era, to be held
-                from ${date} in ${desname}.
+                from ${startdate} - ${enddate} ${month} ${year} in ${desname}.
               </p>
 
               <p style="color:#333333;">
@@ -234,7 +239,7 @@ module.exports = {
          
               <p style="color:#333333;">
                 <strong>Name:</strong> ${userName}<br />
-                <strong>Duration of stay:</strong> ${date} <br />
+                <strong>Duration of stay:</strong> ${startdate} - ${enddate} ${month} ${year} <br />
                 <strong>Venue:</strong> ${Hotel} ${desname} <br />
                 <strong>Destination:</strong> ${desname}
               </p>
@@ -300,7 +305,7 @@ module.exports = {
                   We provide visa services for ${desname}.
                 </li>
                 <li>
-                  Hotel check-in will be on ${cheackoutdate} except for those who will be taking the Full
+                  Hotel check-in will be on ${startdate} ${month} ${year} and check-out on ${enddate} ${month} ${year}, except for those who will be taking the Full
                   Experience Package.
                 </li>
                 <li>
