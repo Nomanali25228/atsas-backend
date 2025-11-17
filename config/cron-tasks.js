@@ -5,7 +5,7 @@ module.exports = {
   // CRON: Runs every minute
   '*/1 * * * *': async ({ strapi }) => {
     try {
-      const oneHourAgo =new Date(Date.now() - 1 * 60 * 1000);
+      const oneHourAgo =new Date(Date.now() - 8 * 60 * 60 * 1000);;
 
 
       const notifications = await strapi.db.query('api::notification.notification').findMany({
@@ -40,18 +40,16 @@ module.exports = {
           FirstName: userName = 'User',
           Idname: userId = '',
           Destinations: destination = '',
-startdate: startdate = '',
- enddate: enddate = '',
-          month: month = '',
-          year: year = '',
+
 
   } = notifs[0] || {};
+  
 
         if (destination == "Dubai, UAE") {
           var desname = "Dubai, UAE";
           var country = "UAE";
-          var date = "2<sup>nd</sup> - 5<sup>th</sup> October 2025 ,"
-          var cheackoutdate = "2nd September 2025 and check-out on 5th October  2025,"
+          var date = "13<sup>th</sup> - 16<sup>th</sup> February 2026 ,"
+          var cheackoutdate = "13 February 2026 and check-out on 16 February 2026,"
           var payment = "UAEpayment"
           var basicprice = "459"
           var fullprice = "679"
@@ -95,8 +93,8 @@ startdate: startdate = '',
         } else if (destination == "Riyadh, Saudi Arabia") {
           var desname = "Riyadh, Saudi Arabia";
           var country = "Saudi Arabia";
-          var date = "16<sup>th</sup> - 19<sup>th</sup> october 2025,"
-          var cheackoutdate = "16th October 2025 and check-out on 19th October 2025,"
+          var date = "1<sup>st</sup> - 4<sup>th</sup> october 2026,"
+          var cheackoutdate = "1st October 2026 and check-out on 4th October 2026,"
           var payment = "Saudipayment"
           var basicprice = "649"
           var fullprice = "799"
@@ -110,8 +108,8 @@ startdate: startdate = '',
         } else if (destination == "London, UK") {
           var desname = "London, UK";
           var country = "UK";
-          var date = "20<sup>th</sup> - 24<sup>th</sup> November 2025,"
-          var cheackoutdate = "20th November 2025 and check-out on 24th November 2025,"
+          var date = "22<sup>nd</sup> - 25<sup>th</sup> January 2026,"
+          var cheackoutdate = "22nd January 2026 and check-out on 25th January 2026,"
           var payment = "UKpayment"
           var basicprice = "959"
           var fullprice = "1659"
@@ -227,7 +225,7 @@ startdate: startdate = '',
                 Dear Applicant,<br /><br />
                 We are grateful to inform you that you have been selected to join the Atsas International MUN ${desname}
                 2025 United Nations Simulation Conference Crafting Future Leaders in the Post-Pandemic Era, to be held
-                from ${startdate} - ${enddate} ${month} ${year} in ${desname}.
+                from ${date}.
               </p>
 
               <p style="color:#333333;">
@@ -240,7 +238,7 @@ startdate: startdate = '',
          
               <p style="color:#333333;">
                 <strong>Name:</strong> ${userName}<br />
-                <strong>Duration of stay:</strong> ${startdate} - ${enddate} ${month} ${year} <br />
+                <strong>Duration of stay:</strong> ${date} <br />
                 <strong>Venue:</strong> ${Hotel} ${desname} <br />
                 <strong>Destination:</strong> ${desname}
               </p>
@@ -306,7 +304,7 @@ startdate: startdate = '',
                   We provide visa services for ${desname}.
                 </li>
                 <li>
-                  Hotel check-in will be on ${startdate} ${month} ${year} and check-out on ${enddate} ${month} ${year}, except for those who will be taking the Full
+                  Hotel check-in will be on ${cheackoutdate}, except for those who will be taking the Full
                   Experience Package.
                 </li>
                 <li>
