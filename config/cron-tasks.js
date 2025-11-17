@@ -5,7 +5,8 @@ module.exports = {
   // CRON: Runs every minute
   '*/1 * * * *': async ({ strapi }) => {
     try {
-      const oneHourAgo = new Date(Date.now() - 8 * 60 * 60 * 1000);
+      const oneHourAgo =new Date(Date.now() - 1 * 60 * 1000);
+
 
       const notifications = await strapi.db.query('api::notification.notification').findMany({
         where: {
