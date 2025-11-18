@@ -5,7 +5,7 @@ module.exports = {
   // CRON: Runs every minute
   '*/1 * * * *': async ({ strapi }) => {
     try {
-      const oneHourAgo =new Date(Date.now() - 8 * 60 * 60 * 1000);;
+      const oneHourAgo =new Date(Date.now() - 8 * 60 * 60 * 1000);
 
 
       const notifications = await strapi.db.query('api::notification.notification').findMany({
@@ -40,6 +40,11 @@ module.exports = {
           FirstName: userName = 'User',
           Idname: userId = '',
           Destinations: destination = '',
+          startdate: startdate = '',
+          enddate: enddate = '',
+          month: month = '',
+          year: year = '',
+ 
 
 
   } = notifs[0] || {};
@@ -225,7 +230,7 @@ module.exports = {
                 Dear Applicant,<br /><br />
                 We are grateful to inform you that you have been selected to join the Atsas International MUN ${desname}
                 2025 United Nations Simulation Conference Crafting Future Leaders in the Post-Pandemic Era, to be held
-                from ${date}.
+                from  ${startdate} - ${enddate} ${month} ${year}.
               </p>
 
               <p style="color:#333333;">
@@ -238,7 +243,7 @@ module.exports = {
          
               <p style="color:#333333;">
                 <strong>Name:</strong> ${userName}<br />
-                <strong>Duration of stay:</strong> ${date} <br />
+                <strong>Duration of stay:</strong> ${startdate} - ${enddate} ${month} ${year} <br />
                 <strong>Venue:</strong> ${Hotel} ${desname} <br />
                 <strong>Destination:</strong> ${desname}
               </p>
@@ -304,7 +309,7 @@ module.exports = {
                   We provide visa services for ${desname}.
                 </li>
                 <li>
-                  Hotel check-in will be on ${cheackoutdate}, except for those who will be taking the Full
+                  Hotel check-in will be on ${startdate} ${month} ${year} and check-out on ${enddate} ${month} ${year}, except for those who will be taking the Full
                   Experience Package.
                 </li>
                 <li>

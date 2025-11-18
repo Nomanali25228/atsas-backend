@@ -746,6 +746,7 @@ export interface ApiNotificationNotification
     Destinations: Schema.Attribute.String;
     Email: Schema.Attribute.Email;
     emailSent: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<false>;
+    enddate: Schema.Attribute.String;
     FirstName: Schema.Attribute.String;
     Idname: Schema.Attribute.BigInteger;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
@@ -754,10 +755,13 @@ export interface ApiNotificationNotification
       'api::notification.notification'
     > &
       Schema.Attribute.Private;
+    month: Schema.Attribute.String;
     publishedAt: Schema.Attribute.DateTime;
+    startdate: Schema.Attribute.String;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
+    year: Schema.Attribute.String;
   };
 }
 

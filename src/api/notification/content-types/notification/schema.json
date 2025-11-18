@@ -27,6 +27,18 @@
     },
     "Destinations": {
       "type": "string"
+    },
+    "startdate": {
+      "type": "string"
+    },
+    "enddate": {
+      "type": "string"
+    },
+    "month": {
+      "type": "string"
+    },
+    "year": {
+      "type": "string"
     }
   }
 }
