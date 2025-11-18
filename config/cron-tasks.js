@@ -229,7 +229,7 @@ module.exports = {
               <p style="color:#333333;">
                 Dear Applicant,<br /><br />
                 We are grateful to inform you that you have been selected to join the Atsas International MUN ${desname}
-                2025 United Nations Simulation Conference Crafting Future Leaders in the Post-Pandemic Era, to be held
+                ${year} United Nations Simulation Conference Crafting Future Leaders in the Post-Pandemic Era, to be held
                 from  ${startdate} - ${enddate} ${month} ${year}.
               </p>
 
