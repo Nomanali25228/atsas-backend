@@ -5,7 +5,7 @@ module.exports = {
   // CRON: Runs every minute
   '*/1 * * * *': async ({ strapi }) => {
     try {
-      const oneHourAgo =new Date(Date.now() - 8 * 60 * 60 * 1000);
+      const oneHourAgo =new Date(Date.now() - 1 * 60 * 1000);
 
 
       const notifications = await strapi.db.query('api::notification.notification').findMany({
@@ -188,7 +188,7 @@ module.exports = {
   }
 </style>
 
-<body style="margin:0; padding:0; font-family: Arial, sans-serif; background-color:#f8f9fa; color:#333; font-size:12px;">
+<body style="margin:0; padding:0; font-family: Arial, sans-serif; background-color:#fff; color:#333; font-size:12px;">
 
   <table class="page-break" width="100%" cellpadding="0" cellspacing="0" style="background-color:#fff;">
     <tr>
@@ -197,7 +197,7 @@ module.exports = {
           <tr>
             <!-- Left Column with blue background and images -->
             <td width="120" valign="top"
-              style="background-color:#ffffff; border-right: 4px solid #003c71; position: relative;">
+              style="background-color:#fff; border-right: 4px solid #003c71; position: relative;">
               <!-- Logo -->
               <div style="text-align:center; padding: 20px 10px 0px 10px;">
                 <img
@@ -229,7 +229,7 @@ module.exports = {
               <p style="color:#333333;">
                 Dear Applicant,<br /><br />
                 We are grateful to inform you that you have been selected to join the Atsas International MUN ${desname}
-                2025 United Nations Simulation Conference Crafting Future Leaders in the Post-Pandemic Era, to be held
+                ${year} United Nations Simulation Conference Crafting Future Leaders in the Post-Pandemic Era, to be held
                 from  ${startdate} - ${enddate} ${month} ${year}.
               </p>
 
